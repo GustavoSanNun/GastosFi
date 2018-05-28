@@ -28,7 +28,7 @@ import mx.com.victorhugo.mejoresfinanzas.utilidades.utilidades;
 
 public class agregar_transaccion extends AppCompatActivity {
     TextView muestra_tipo ,tvfecha;
-    DateFormat formatDateTime = DateFormat.getDateInstance();
+    DateFormat formatDateTime = new SimpleDateFormat("dd-MM-yyyy");
     Calendar dateTime= Calendar.getInstance();
     private ImageButton btn_date;
 
