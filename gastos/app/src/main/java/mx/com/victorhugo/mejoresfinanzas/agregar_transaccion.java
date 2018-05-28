@@ -1,5 +1,6 @@
 package mx.com.victorhugo.mejoresfinanzas;
 
+import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,15 +20,20 @@ import org.w3c.dom.Text;
 
 import java.sql.Date;
 import java.sql.SQLData;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import mx.com.victorhugo.mejoresfinanzas.utilidades.utilidades;
 
 public class agregar_transaccion extends AppCompatActivity {
-    TextView muestra_tipo;
+    TextView muestra_tipo ,tvfecha;
+    DateFormat formatDateTime = DateFormat.getDateInstance();
+    Calendar dateTime= Calendar.getInstance();
+    private ImageButton btn_date;
+
     //Calendar controlador_fecha;
-    EditText etxmonto,etxnota,tvfecha;
+    EditText etxmonto,etxnota;
     Spinner spconcepto;
     //SimpleDateFormat simpleDateFormat;
     String tipo_transaccion,fecha_de_alta;
@@ -39,13 +47,23 @@ public class agregar_transaccion extends AppCompatActivity {
         setContentView(R.layout.activity_agregar_transaccion);
         muestra_tipo = (TextView)findViewById(R.id.tvmuestratipo);
         etxmonto = (EditText) findViewById(R.id.etmonto);
-
-       spconcepto = (Spinner) findViewById(R.id.spiconcepto);
+        btn_date = (ImageButton) findViewById(R.id.select_fecha);
+        spconcepto = (Spinner) findViewById(R.id.spiconcepto);
 
 
         etxnota= (EditText) findViewById(R.id.etnota);
-        tvfecha = (EditText) findViewById(R.id.edfecha);
+        tvfecha = (TextView) findViewById(R.id.edfecha);
+        btn_date = (ImageButton) findViewById(R.id.select_fecha);
+        btn_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateDate();
+            }
+        });
+        updateTextLabel();
+
         recibir_datos();
+
         if(tipo_transaccion.equals("gasto")) {
             ArrayAdapter<String> adaptador_lista = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, conceptos_gastos);
             spconcepto.setAdapter(adaptador_lista);
@@ -55,13 +73,22 @@ public class agregar_transaccion extends AppCompatActivity {
             spconcepto.setAdapter(adaptador_lista);
         };
 
-        establecer_fecha();
+
+
+
+
+
+        //establecer_fecha();
+
+
+
 
     }
 
-    private void establecer_fecha() {
-        tvfecha.setText(fecha_de_alta);
-    }
+
+   // private void establecer_fecha() {
+       // tvfecha.setText(fecha_de_alta);
+   // }
 
     public void recibir_datos(){
         Bundle extras = getIntent().getExtras();
@@ -108,5 +135,25 @@ public class agregar_transaccion extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"Id_registro: "+idresultante,Toast.LENGTH_SHORT).show();
         db.close();
 
+    }
+    private void updateDate(){
+        new DatePickerDialog(this,d,dateTime.get(Calendar.YEAR),dateTime.get(Calendar.MONTH),dateTime.get(Calendar.DAY_OF_MONTH)).show();
+    }
+
+
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            dateTime.set(Calendar.YEAR, year);
+            dateTime.set(Calendar.MONTH, month);
+            dateTime.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            updateTextLabel();
+
+        }
+    };
+
+
+    private void updateTextLabel(){
+        tvfecha.setText(formatDateTime.format(dateTime.getTime()));
     }
 }

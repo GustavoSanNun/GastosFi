@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,106 +9,188 @@
 
     <TextView
         android:id="@+id/tvmuestratipo"
-        android:layout_width="155dp"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="88dp"
-        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@id/btnaceptar"
         android:hint="Selecciona el concepto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etmonto"
-        android:layout_width="229dp"
-        android:layout_height="56dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Ingresa monto"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvmuestratipo" />
-
-    <Spinner
-        android:id="@+id/spiconcepto"
-        android:layout_width="229dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:enabled="true"
-        android:text="Monto"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.42"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etmonto" />
-
-    <EditText
-        android:id="@+id/etnota"
-        android:layout_width="230dp"
-        android:layout_height="71dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:cursorVisible="false"
-        android:ems="10"
-        android:enabled="true"
-        android:hint="Nota sobre la transaccion"
-        android:inputType="textUri|textLongMessage"
-        android:maxLength="30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spiconcepto" />
+         />
 
 
-    <EditText
-        android:id="@+id/edfecha"
-        android:layout_width="229dp"
-        android:layout_height="56dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:enabled="true"
-        android:hint="fecha"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etnota" />
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:id="@+id/linearl"
+       android:layout_below="@id/tvmuestratipo"
+       android:orientation="vertical">
+
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="20sp"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="15dp"
+               android:layout_marginLeft="50dp"
+               android:layout_marginRight="10dp"
+               android:text="Monto :"/>
+           <EditText
+               android:id="@+id/etmonto"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="15dp"
+               android:layout_marginLeft="12dp"
+               android:layout_marginRight="10dp"
+
+               android:textSize="18sp"
+               android:hint="Ingresa monto"
+               android:inputType="number"></EditText>
+
+
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="20sp"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="15dp"
+               android:layout_marginLeft="50dp"
+               android:layout_marginRight="10dp"
+               android:text="Concepto :"/>
+           <Spinner
+               android:id="@+id/spiconcepto"
+               android:layout_width="200dp"
+               android:layout_height="25dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="15dp"
+               android:layout_marginLeft="12dp"
+               android:layout_marginRight="10dp"
+               android:enabled="true"
+               android:textAlignment="center"
+               android:text="Monto" />
+
+       </LinearLayout>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="horizontal">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:textSize="20sp"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="15dp"
+               android:layout_marginLeft="50dp"
+               android:layout_marginRight="10dp"
+               android:text="Fecha :"/>
+           <TextView
+               android:id="@+id/edfecha"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:enabled="true"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="15dp"
+               android:layout_marginLeft="12dp"
+               android:layout_marginRight="10dp"
+               android:textSize="20sp"
+               android:hint="fecha"
+               android:inputType="date"
+
+               />
+           <ImageButton
+               android:id="@+id/select_fecha"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="10dp"
+               android:layout_marginBottom="8dp"
+               android:layout_marginTop="1dp"
+               android:layout_marginLeft="15dp"
+               android:src="@drawable/calendar"/>
+
+       </LinearLayout>
+
+   </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/linearl"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="10dp"
+                android:textSize="20sp"
+                android:text="Nota :"/>
+            <EditText
+                android:id="@+id/etnota"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:cursorVisible="false"
+                android:textSize="18sp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="10dp"
+                android:enabled="true"
+                android:hint="Nota sobre la transaccion"
+                android:inputType="textUri|textLongMessage"
+                android:maxLength="30"
+
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btncancelar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toLeftOf="@id/btnaceptar"
         android:onClick="onClick"
         android:text="Cancelar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    />
 
     <Button
         android:id="@+id/btnaceptar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginTop="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="10dp"
         android:onClick="onClick"
         android:text="Aceptar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
-
-
-</android.support.constraint.ConstraintLayout>
+         />
+</RelativeLayout>
