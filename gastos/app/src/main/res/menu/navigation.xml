@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btnmasingreso"
+        android:icon="@drawable/mas"
+        android:title="+Ingreso" />
+
+    <item
+        android:id="@+id/btnmasgastos"
+        android:icon="@drawable/menos"
+        android:title="+Gasto" />
+
+    <item
+        android:id="@+id/btntransacciones"
+        android:icon="@drawable/transac"
+        android:title="Transacciones" />
+
+</menu>
